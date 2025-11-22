@@ -23,21 +23,10 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-
-        getTotalResult().append(String.format("Amount owed is %s%n", usd(getTotalAmount())));
-        getTotalResult().append(String.format("You earned %s credits%n", getTotalVolumeCredits()));
-        return getTotalResult().toString();
-    }
-
-    private int getTotalAmount() {
         int totalAmount = 0;
         for (Performance performance : getInvoice().getPerformances()) {
             totalAmount += getAmount(performance);
         }
-        return totalAmount;
-    }
-
-    private StringBuilder getTotalResult() {
         final StringBuilder result = new StringBuilder(
                 "Statement for " + getInvoice().getCustomer() + System.lineSeparator());
 
@@ -45,10 +34,13 @@ public class StatementPrinter {
             result.append(String.format("  %s: %s (%s seats)%n", getPlay(performance).getName(),
                     usd(getAmount(performance)), performance.getAudience()));
         }
-        return result;
+
+        result.append(String.format("Amount owed is %s%n", usd(totalAmount)));
+        result.append(String.format("You earned %s credits%n", getُTotalVolumeCredits()));
+        return result.toString();
     }
 
-    private int getTotalVolumeCredits() {
+    private int getُTotalVolumeCredits() {
         int volumeCredits = 0;
         for (Performance performance : getInvoice().getPerformances()) {
 

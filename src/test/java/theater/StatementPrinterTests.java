@@ -49,8 +49,8 @@ public class StatementPrinterTests {
             List<Performance> performances = new ArrayList<>();
             for (Object s : jperformances) {
                 JSONObject performance = (JSONObject) s;
-                performances.add(new Performance(performance.getString("playID"),
-                        performance.getInt("audience")));
+                performances.add(new Performance(performance.getInt("audience"), performance.getString("playID")
+                ));
             }
 
             Invoice invoice = new Invoice(customer, performances);

@@ -36,11 +36,11 @@ public class StatementPrinter {
         }
 
         result.append(String.format("Amount owed is %s%n", usd(totalAmount)));
-        result.append(String.format("You earned %s credits%n", getُTotalVolumeCredits()));
+        result.append(String.format("You earned %s credits%n", getTotalVolumeCredits()));
         return result.toString();
     }
 
-    private int getُTotalVolumeCredits() {
+    private int getTotalVolumeCredits() {
         int volumeCredits = 0;
         for (Performance performance : getInvoice().getPerformances()) {
 
